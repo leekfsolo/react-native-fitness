@@ -1,11 +1,25 @@
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 
-import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import colors from "../assets/colors";
+import { RootStackParamList } from "../routes";
 
-type Props = {};
+type Props = NativeStackScreenProps<RootStackParamList>;
 
-const WelcomeScreen = (props: Props) => {
+const Welcome = ({ navigation }: Props) => {
+  const navigateToSignup = () => {
+    navigation.push("Signup");
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -24,9 +38,12 @@ const WelcomeScreen = (props: Props) => {
           </Text>
         </View>
         <View style={styles.footerHome}>
-          <View style={styles.buttonHome}>
+          <TouchableOpacity
+            style={styles.buttonHome}
+            onPress={navigateToSignup}
+          >
             <Text style={[styles.baseText, { fontSize: 28 }]}>Get Started</Text>
-          </View>
+          </TouchableOpacity>
           <Text
             style={[styles.baseText, { color: colors.white, fontSize: 20 }]}
           >
@@ -72,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WelcomeScreen;
+export default Welcome;
