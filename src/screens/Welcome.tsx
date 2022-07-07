@@ -11,13 +11,14 @@ import {
   View,
 } from "react-native";
 import colors from "../assets/colors";
+import CButton from "../components/CButton/CButton";
 import { RootStackParamList } from "../routes";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 const Welcome = ({ navigation }: Props) => {
-  const navigateToSignup = () => {
-    navigation.push("Signup");
+  const handleNavigate = (screen: keyof RootStackParamList) => {
+    navigation.push(screen);
   };
 
   return (
@@ -38,14 +39,14 @@ const Welcome = ({ navigation }: Props) => {
           </Text>
         </View>
         <View style={styles.footerHome}>
-          <TouchableOpacity
-            style={styles.buttonHome}
-            onPress={navigateToSignup}
-          >
-            <Text style={[styles.baseText, { fontSize: 28 }]}>Get Started</Text>
-          </TouchableOpacity>
+          <CButton
+            fontSize={28}
+            handleNavigate={() => handleNavigate("Signup")}
+            title="Get Started"
+          />
           <Text
             style={[styles.baseText, { color: colors.white, fontSize: 20 }]}
+            onPress={() => handleNavigate("Signin")}
           >
             Or Login
           </Text>
