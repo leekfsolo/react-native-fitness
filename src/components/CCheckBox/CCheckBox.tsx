@@ -3,6 +3,7 @@ import React, { Dispatch, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import colors from "../../assets/colors";
 import { checkboxActionType } from "../../screens/reducer/enum";
+import RobotoText from "../RobotoText/RobotoText";
 
 type Props = {
   label: string;
@@ -21,7 +22,7 @@ const CCheckBox = (props: Props) => {
         style={styles.checkbox}
         color={colors.green}
       />
-      <Text style={styles.label}>{label}</Text>
+      <RobotoText style={styles.label}>{label}</RobotoText>
     </View>
   );
 };
