@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 import colors from "../../assets/colors";
 
 type Props = {
@@ -15,8 +15,15 @@ const CButton = (props: Props) => {
 
   return (
     <Pressable
-      style={[styles.buttonHome, style, { opacity: disabled ? 0.3 : 1 }]}
-      onPress={handleNavigate}
+      style={({ pressed }) => [
+        styles.buttonHome,
+        style,
+        {
+          opacity: disabled ? 0.3 : 1,
+          backgroundColor: pressed ? "#a86607" : colors.orange,
+        },
+      ]}
+      onPressIn={handleNavigate}
       disabled={disabled}
     >
       <Text style={[styles.baseText, { fontSize }]}>{title}</Text>
@@ -33,7 +40,6 @@ const styles = StyleSheet.create({
   buttonHome: {
     paddingHorizontal: 50,
     paddingVertical: 10,
-    backgroundColor: colors.orange,
     borderRadius: 10,
     marginBottom: 18,
   },

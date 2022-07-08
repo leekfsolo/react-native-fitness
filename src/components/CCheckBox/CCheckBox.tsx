@@ -19,7 +19,7 @@ const CCheckBox = (props: Props) => {
         value={isSelected}
         onValueChange={setSelection}
         style={styles.checkbox}
-        color="#00FF5E"
+        color={colors.green}
       />
       <Text style={styles.label}>{label}</Text>
     </View>

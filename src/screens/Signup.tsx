@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -23,7 +23,6 @@ import { checkboxActionType } from "./reducer/enum";
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 const Signup = ({ navigation }: Props) => {
-  const [text, setText] = useState<string>("");
   const [checkboxValue, setCheckboxValue] = useReducer(
     checkboxReducer,
     initCheckbox
