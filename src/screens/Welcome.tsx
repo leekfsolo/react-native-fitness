@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import colors from "../assets/colors";
 import CButton from "../components/CButton/CButton";
+import Heading from "../components/Heading";
+import RobotoText from "../components/RobotoText/RobotoText";
 import { RootStackParamList } from "../routes";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
@@ -34,9 +36,7 @@ const Welcome = ({ navigation }: Props) => {
             style={styles.logo}
             resizeMode="cover"
           />
-          <Text style={[styles.baseText, { fontSize: 24 }]}>
-            Make yourself stronger than your excuses
-          </Text>
+          <Heading>Make yourself stronger than your excuses</Heading>
         </View>
         <View style={styles.footerHome}>
           <CButton
@@ -44,12 +44,11 @@ const Welcome = ({ navigation }: Props) => {
             handleNavigate={() => handleNavigate("Signup")}
             title="Get Started"
           />
-          <Text
-            style={[styles.baseText, { color: colors.white, fontSize: 20 }]}
-            onPress={() => handleNavigate("Signin")}
-          >
-            Or Login
-          </Text>
+          <TouchableOpacity onPress={() => handleNavigate("Signin")}>
+            <RobotoText style={{ color: colors.white, fontSize: 20 }}>
+              Or Login
+            </RobotoText>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     </View>
@@ -57,23 +56,11 @@ const Welcome = ({ navigation }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  baseText: {
-    color: colors.textGray,
-    textAlign: "center",
-    fontWeight: "400",
-  },
   bgContainer: {
     flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
     padding: 40,
-  },
-  buttonHome: {
-    paddingHorizontal: 50,
-    paddingVertical: 10,
-    backgroundColor: colors.orange,
-    borderRadius: 10,
-    marginBottom: 18,
   },
   container: {
     flex: 1,

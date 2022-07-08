@@ -1,25 +1,18 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 
-import Icon from "react-native-vector-icons/MaterialIcons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import {
-  ImageBackground,
-  StatusBar,
-  StyleSheet,
-  TouchableHighlight,
-  View,
-} from "react-native";
+import { ImageBackground, StatusBar, StyleSheet, View } from "react-native";
 import { RootStackParamList } from "../routes";
-import colors from "../assets/colors";
 import { Formik } from "formik";
 import CButton from "../components/CButton";
 import CCheckBox from "../components/CCheckBox";
 import { checkboxReducer } from "./reducer";
-import { initCheckbox, SignupValue } from "./reducer/model";
+import { initCheckbox, SignupFormControl, SignupValue } from "./reducer/model";
 import { checkboxActionType, SIGNUP } from "./reducer/enum";
-import RobotoText from "../components/RobotoText/RobotoText";
 import * as Yup from "yup";
 import CInput from "../components/CInput";
+import Heading from "../components/Heading";
+import GoBack from "../components/GoBack";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
@@ -36,12 +29,14 @@ const signupElements: Array<SignupValue> = [
 ];
 
 const Signup = ({ navigation }: Props) => {
-  const [isShow, setIsShow] = useState<boolean>(false);
   const [checkboxValue, setCheckboxValue] = useReducer(
     checkboxReducer,
     initCheckbox
   );
   const isFormValid = checkboxValue.privacy && checkboxValue.terms;
+  const createAccount = (value: SignupFormControl) => {
+    navigation.push("Signin");
+  };
 
   return (
     <View style={styles.container}>
@@ -50,19 +45,21 @@ const Signup = ({ navigation }: Props) => {
         resizeMode="cover"
         style={styles.bgContainer}
       >
-        <TouchableHighlight
-          style={styles.goBack}
-          onPress={() => navigation.goBack()}
-        >
-          <Icon name="west" color={colors.textGray} size={15} />
-        </TouchableHighlight>
+        <GoBack navigation={navigation} />
 
-        <RobotoText style={styles.textHeading}>
+        <Heading
+          style={{
+            marginTop: StatusBar.currentHeight
+              ? 240 + StatusBar.currentHeight
+              : 240,
+            marginBottom: 35,
+          }}
+        >
           Add your details below to set up an account
-        </RobotoText>
+        </Heading>
         <Formik
           initialValues={{ email: "", password: "" }}
-          onSubmit={(value) => console.log(value)}
+          onSubmit={(value) => createAccount(value)}
           validationSchema={SignupSchema}
         >
           {({
@@ -127,18 +124,6 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     width: "100%",
     position: "relative",
-  },
-  goBack: {
-    position: "absolute",
-    top: StatusBar.currentHeight ? StatusBar.currentHeight + 20 : 35,
-    left: 20,
-  },
-  textHeading: {
-    fontSize: 24,
-    marginTop: StatusBar.currentHeight ? 240 + StatusBar.currentHeight : 240,
-    marginBottom: 35,
-    textAlign: "center",
-    color: colors.textGray,
   },
 });
 
