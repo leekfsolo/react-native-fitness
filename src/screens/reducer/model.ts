@@ -1,4 +1,4 @@
-import { checkboxActionType, SIGNUP } from "./enum";
+import { ACCOUNT, checkboxActionType } from "./enum";
 
 export interface CheckboxValue {
   privacy: boolean;
@@ -15,7 +15,7 @@ export interface SignupFormControl {
 }
 
 export interface SignupValue {
-  label: SIGNUP;
+  label: ACCOUNT;
   placeholder: string;
 }
 

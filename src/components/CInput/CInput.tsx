@@ -2,9 +2,18 @@ import React, { useState } from "react";
 
 import { FormikErrors, FormikTouched } from "formik";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { StyleSheet, TextInput, View } from "react-native";
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import colors from "../../assets/colors";
-import { SIGNUP } from "../../screens/reducer/enum";
+import { ACCOUNT } from "../../screens/reducer/enum";
 import { SignupFormControl, SignupValue } from "../../screens/reducer/model";
 import RobotoText from "../RobotoText/RobotoText";
 
@@ -21,6 +30,7 @@ const CInput = (props: Props) => {
   const { elem, values, errors, touched, handleBlur, handleChange } = props;
 
   const [isShow, setIsShow] = useState<boolean>(false);
+  const isPassword = elem.label === ACCOUNT.PASSWORD;
 
   return (
     <View style={styles.formControl}>
@@ -31,11 +41,11 @@ const CInput = (props: Props) => {
         style={styles.textInput}
         placeholder={elem.placeholder}
         placeholderTextColor="#9E9E9E"
-        secureTextEntry={isShow && elem.label === SIGNUP.PASSWORD}
+        secureTextEntry={!isShow && isPassword}
       />
-      {elem.label === SIGNUP.PASSWORD && (
+      {elem.label === ACCOUNT.PASSWORD && (
         <Icon
-          name={isShow ? "visibility-off" : "visibility"}
+          name={isShow ? "visibility" : "visibility-off"}
           color={colors.textGray}
           size={15}
           style={styles.iconEye}

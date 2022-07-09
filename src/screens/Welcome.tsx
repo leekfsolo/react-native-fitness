@@ -24,34 +24,32 @@ const Welcome = ({ navigation }: Props) => {
   };
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require("../assets/images/1.jpg")}
-        resizeMode="cover"
-        style={styles.bgContainer}
-      >
-        <View style={styles.logoContainer}>
-          <Image
-            source={require("../assets/images/logo.png")}
-            style={styles.logo}
-            resizeMode="cover"
-          />
-          <Heading>Make yourself stronger than your excuses</Heading>
-        </View>
-        <View style={styles.footerHome}>
-          <CButton
-            fontSize={28}
-            handleNavigate={() => handleNavigate("Signup")}
-            title="Get Started"
-          />
-          <TouchableOpacity onPress={() => handleNavigate("Signin")}>
-            <RobotoText style={{ color: colors.white, fontSize: 20 }}>
-              Or Login
-            </RobotoText>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </View>
+    <ImageBackground
+      source={require("../assets/images/1.jpg")}
+      resizeMode="cover"
+      style={styles.bgContainer}
+    >
+      <View style={styles.logoContainer}>
+        <Image
+          source={require("../assets/images/logo.png")}
+          style={styles.logo}
+          resizeMode="cover"
+        />
+        <Heading>Make yourself stronger than your excuses</Heading>
+      </View>
+      <View style={styles.footerHome}>
+        <CButton
+          fontSize={28}
+          handleNavigate={() => handleNavigate("Signup")}
+          title="Get Started"
+        />
+        <TouchableOpacity onPress={() => handleNavigate("Signin")}>
+          <RobotoText style={{ color: colors.white, fontSize: 20 }}>
+            Or Login
+          </RobotoText>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 };
 

@@ -3,7 +3,7 @@ export enum checkboxActionType {
   TERMS = "TERMS",
 }
 
-export enum SIGNUP {
+export enum ACCOUNT {
   EMAIL = "email",
   PASSWORD = "password",
 }

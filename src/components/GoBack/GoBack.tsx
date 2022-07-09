@@ -7,17 +7,27 @@ import {
   TouchableHighlight,
   View,
 } from "react-native";
-import { Icon } from "react-native-vector-icons/Icon";
+import Icon from "react-native-vector-icons/MaterialIcons";
 import colors from "../../assets/colors";
 import { RootStackParamList } from "../../routes";
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
   style?: Object;
+  offsetTop?: number;
 };
 
 const GoBack = (props: Props) => {
-  const { navigation, style } = props;
+  const { navigation, style, offsetTop = 0 } = props;
+  const styles = StyleSheet.create({
+    goBack: {
+      position: "absolute",
+      top: StatusBar.currentHeight
+        ? StatusBar.currentHeight + offsetTop
+        : offsetTop + 15,
+      left: 20,
+    },
+  });
 
   return (
     <TouchableHighlight
@@ -30,11 +40,3 @@ const GoBack = (props: Props) => {
 };
 
 export default GoBack;
-
-const styles = StyleSheet.create({
-  goBack: {
-    position: "absolute",
-    top: StatusBar.currentHeight ? StatusBar.currentHeight + 20 : 35,
-    left: 20,
-  },
-});

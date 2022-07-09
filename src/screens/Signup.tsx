@@ -8,7 +8,7 @@ import CButton from "../components/CButton";
 import CCheckBox from "../components/CCheckBox";
 import { checkboxReducer } from "./reducer";
 import { initCheckbox, SignupFormControl, SignupValue } from "./reducer/model";
-import { checkboxActionType, SIGNUP } from "./reducer/enum";
+import { ACCOUNT, checkboxActionType } from "./reducer/enum";
 import * as Yup from "yup";
 import CInput from "../components/CInput";
 import Heading from "../components/Heading";
@@ -24,8 +24,8 @@ const SignupSchema = Yup.object().shape({
     .required("Required"),
 });
 const signupElements: Array<SignupValue> = [
-  { label: SIGNUP.EMAIL, placeholder: "example@gmail.com" },
-  { label: SIGNUP.PASSWORD, placeholder: "Enter your password" },
+  { label: ACCOUNT.EMAIL, placeholder: "example@gmail.com" },
+  { label: ACCOUNT.PASSWORD, placeholder: "Enter your password" },
 ];
 
 const Signup = ({ navigation }: Props) => {
@@ -39,75 +39,66 @@ const Signup = ({ navigation }: Props) => {
   };
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require("../assets/images/2.jpg")}
-        resizeMode="cover"
-        style={styles.bgContainer}
-      >
-        <GoBack navigation={navigation} />
+    <ImageBackground
+      source={require("../assets/images/2.jpg")}
+      resizeMode="cover"
+      style={styles.bgContainer}
+    >
+      <GoBack navigation={navigation} offsetTop={20} />
 
-        <Heading
-          style={{
-            marginTop: StatusBar.currentHeight
-              ? 240 + StatusBar.currentHeight
-              : 240,
-            marginBottom: 35,
-          }}
-        >
-          Add your details below to set up an account
-        </Heading>
-        <Formik
-          initialValues={{ email: "", password: "" }}
-          onSubmit={(value) => createAccount(value)}
-          validationSchema={SignupSchema}
-        >
-          {({
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            values,
-            errors,
-            touched,
-          }) => (
-            <View style={{ width: "100%" }}>
-              {signupElements.map((elem, idx) => (
-                <CInput
-                  elem={elem}
-                  key={idx}
-                  errors={errors}
-                  handleBlur={handleBlur}
-                  handleChange={handleChange}
-                  touched={touched}
-                  values={values}
-                />
-              ))}
-              <CCheckBox
-                label="I’ve read the privacy policy"
-                isSelected={checkboxValue.privacy}
-                setSelection={() =>
-                  setCheckboxValue({ type: checkboxActionType.PRIVACY })
-                }
+      <Heading style={{ marginBottom: 35 }} offsetTop={240}>
+        Add your details below to set up an account
+      </Heading>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        onSubmit={(value) => createAccount(value)}
+        validationSchema={SignupSchema}
+      >
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+        }) => (
+          <View style={{ width: "100%" }}>
+            {signupElements.map((elem, idx) => (
+              <CInput
+                elem={elem}
+                key={idx}
+                errors={errors}
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+                touched={touched}
+                values={values}
               />
-              <CCheckBox
-                label="I accept the terms & conditions"
-                isSelected={checkboxValue.terms}
-                setSelection={() =>
-                  setCheckboxValue({ type: checkboxActionType.TERMS })
-                }
-              />
-              <CButton
-                fontSize={28}
-                handleNavigate={handleSubmit}
-                title="Create Account"
-                style={{ marginTop: 40 }}
-                disabled={!isFormValid}
-              />
-            </View>
-          )}
-        </Formik>
-      </ImageBackground>
-    </View>
+            ))}
+            <CCheckBox
+              label="I’ve read the privacy policy"
+              isSelected={checkboxValue.privacy}
+              setSelection={() =>
+                setCheckboxValue({ type: checkboxActionType.PRIVACY })
+              }
+            />
+            <CCheckBox
+              label="I accept the terms & conditions"
+              isSelected={checkboxValue.terms}
+              setSelection={() =>
+                setCheckboxValue({ type: checkboxActionType.TERMS })
+              }
+            />
+            <CButton
+              fontSize={28}
+              handleNavigate={handleSubmit}
+              title="Create Account"
+              style={{ marginTop: 40 }}
+              disabled={!isFormValid}
+            />
+          </View>
+        )}
+      </Formik>
+    </ImageBackground>
   );
 };
 
@@ -116,9 +107,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 40,
-  },
-  container: {
-    flex: 1,
   },
   formControl: {
     marginBottom: 25,
