@@ -10,7 +10,7 @@ import Heading from "../components/Heading";
 import RobotoText from "../components/RobotoText/RobotoText";
 import { RootStackParamList } from "../routes";
 import { ACCOUNT } from "./reducer/enum";
-import { SignupValue } from "./reducer/model";
+import { SignupFormControl, SignupValue } from "./reducer/model";
 import * as Yup from "yup";
 
 const accountValue: Array<SignupValue> = [
@@ -25,6 +25,12 @@ const SigninSchema = Yup.object().shape({
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 const Signin = ({ navigation }: Props) => {
+  const validateAccount = (value: SignupFormControl) => {
+    // Validate aacount
+
+    navigation.push("EnterName");
+  };
+
   return (
     <ImageBackground
       source={require("../assets/images/3.jpg")}
@@ -38,7 +44,7 @@ const Signin = ({ navigation }: Props) => {
 
       <Formik
         initialValues={{ email: "", password: "" }}
-        onSubmit={(value) => console.log(value)}
+        onSubmit={(value) => validateAccount(value)}
         validationSchema={SigninSchema}
       >
         {({
@@ -87,26 +93,9 @@ const Signin = ({ navigation }: Props) => {
 export default Signin;
 
 const styles = StyleSheet.create({
-  baseText: {
-    color: colors.textGray,
-    textAlign: "center",
-    fontWeight: "400",
-  },
   bgContainer: {
     flex: 1,
     alignItems: "center",
     padding: 40,
-    position: "absolute",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-  },
-  buttonHome: {
-    paddingHorizontal: 50,
-    paddingVertical: 10,
-    backgroundColor: colors.orange,
-    borderRadius: 10,
-    marginBottom: 18,
   },
 });

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { FormikErrors, FormikTouched } from "formik";
+import { FormikContext, FormikErrors, FormikTouched } from "formik";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import {
   Keyboard,
@@ -42,6 +42,7 @@ const CInput = (props: Props) => {
         placeholder={elem.placeholder}
         placeholderTextColor="#9E9E9E"
         secureTextEntry={!isShow && isPassword}
+        underlineColorAndroid="transparent"
       />
       {elem.label === ACCOUNT.PASSWORD && (
         <Icon

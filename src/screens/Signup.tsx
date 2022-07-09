@@ -108,11 +108,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 40,
   },
-  formControl: {
-    marginBottom: 25,
-    width: "100%",
-    position: "relative",
-  },
 });
 
 export default Signup;
