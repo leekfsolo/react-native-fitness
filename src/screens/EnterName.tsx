@@ -6,10 +6,7 @@ import GoBack from "../components/GoBack";
 import Heading from "../components/Heading";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import CInput from "../components/CInput";
 import CButton from "../components/CButton";
-import { SignupFormControl } from "./reducer/model";
-import { ACCOUNT } from "./reducer/enum";
 import colors from "../assets/colors";
 
 const SigninSchema = Yup.object().shape({
@@ -21,18 +18,17 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 const EnterName = ({ navigation }: Props) => {
   const validateAccount = (value: { name: string }) => {
     // Validate aacount
-    console.log("testts");
     navigation.push("EnterDate");
   };
 
   return (
     <ImageBackground
-      source={require("../assets/images/3.jpg")}
+      source={require("../assets/images/4.jpg")}
       resizeMode="cover"
       style={styles.bgContainer}
     >
       <GoBack navigation={navigation} offsetTop={10} />
-      <Heading offsetTop={260} style={{ marginBottom: 35 }}>
+      <Heading offsetTop={400} style={{ marginBottom: 35 }}>
         It’s great that you’re here! First things first, what should we call
         you?
       </Heading>
@@ -63,8 +59,8 @@ const EnterName = ({ navigation }: Props) => {
             <CButton
               fontSize={28}
               handleNavigate={handleSubmit}
-              title="Login"
-              style={{ marginTop: 150 }}
+              title="Continue"
+              style={{ marginTop: 50 }}
             />
           </View>
         )}
