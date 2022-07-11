@@ -1,13 +1,7 @@
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 
-import {
-  Image,
-  ImageBackground,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import colors from "../assets/colors";
 import CButton from "../components/CButton/CButton";
 import CImageBackground from "../components/CImageBackground";
