@@ -1,5 +1,6 @@
-import { ImageBackground, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
+
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../routes";
 import GoBack from "../components/GoBack";
@@ -9,6 +10,7 @@ import colors from "../assets/colors";
 import RobotoText from "../components/RobotoText/RobotoText";
 import { MONTHS } from "../constants";
 import CDatePicker, { MODE } from "../components/CDatePicker";
+import CImageBackground from "../components/CImageBackground";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
@@ -16,6 +18,8 @@ const EnterDate = ({ navigation }: Props) => {
   const [date, setDate] = useState<Date>(new Date());
   const [mode, setMode] = useState<MODE>(MODE.DATE);
   const [show, setShow] = useState<boolean>(false);
+  const imgBg = require("../assets/images/5.jpg");
+
   const chooseDate = (value: Date) => {
     // choose date
     navigation.push("EnterTimes");
@@ -29,11 +33,7 @@ const EnterDate = ({ navigation }: Props) => {
 
   return (
     <>
-      <ImageBackground
-        source={require("../assets/images/5.jpg")}
-        resizeMode="cover"
-        style={styles.bgContainer}
-      >
+      <CImageBackground source={imgBg}>
         <GoBack navigation={navigation} offsetTop={10} />
         <Heading offsetTop={400} style={{ marginBottom: 35 }}>
           When do you want to start?
@@ -53,7 +53,7 @@ const EnterDate = ({ navigation }: Props) => {
           title="Continue"
           style={{ marginTop: 100, width: "100%" }}
         />
-      </ImageBackground>
+      </CImageBackground>
       {show && (
         <CDatePicker
           date={date}
@@ -70,11 +70,6 @@ const EnterDate = ({ navigation }: Props) => {
 export default EnterDate;
 
 const styles = StyleSheet.create({
-  bgContainer: {
-    flex: 1,
-    alignItems: "center",
-    padding: 40,
-  },
   datePicker: {
     alignItems: "center",
     backgroundColor: colors.darkGray,

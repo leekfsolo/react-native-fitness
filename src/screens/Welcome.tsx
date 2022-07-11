@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 
@@ -6,12 +5,12 @@ import {
   Image,
   ImageBackground,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from "react-native";
 import colors from "../assets/colors";
 import CButton from "../components/CButton/CButton";
+import CImageBackground from "../components/CImageBackground";
 import Heading from "../components/Heading";
 import RobotoText from "../components/RobotoText/RobotoText";
 import { RootStackParamList } from "../routes";
@@ -19,16 +18,13 @@ import { RootStackParamList } from "../routes";
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 const Welcome = ({ navigation }: Props) => {
+  const imgBg = require("../assets/images/1.jpg");
   const handleNavigate = (screen: keyof RootStackParamList) => {
     navigation.push(screen);
   };
 
   return (
-    <ImageBackground
-      source={require("../assets/images/1.jpg")}
-      resizeMode="cover"
-      style={styles.bgContainer}
-    >
+    <CImageBackground source={imgBg}>
       <View style={styles.logoContainer}>
         <Image
           source={require("../assets/images/logo.png")}
@@ -49,17 +45,11 @@ const Welcome = ({ navigation }: Props) => {
           </RobotoText>
         </TouchableOpacity>
       </View>
-    </ImageBackground>
+    </CImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  bgContainer: {
-    flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 40,
-  },
   container: {
     flex: 1,
   },

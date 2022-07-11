@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 import PickerSelect from "react-native-picker-select";
 import colors from "../../assets/colors";
@@ -7,12 +7,10 @@ import colors from "../../assets/colors";
 type Props = {
   selectedTimes: string;
   setSelectedTimes: (selectedTimes: string) => void;
-  setShow: (show: boolean) => void;
-  style?: Object;
 };
 
 const CSelect = (props: Props) => {
-  const { selectedTimes, setSelectedTimes, style } = props;
+  const { selectedTimes, setSelectedTimes } = props;
 
   return (
     <PickerSelect
@@ -33,10 +31,30 @@ const CSelect = (props: Props) => {
           color: colors.lightBlack,
           backgroundColor: colors.darkGray,
           fontSize: 16,
-          paddingHorizontal: 28,
-          paddingVertical: 8,
+          paddingHorizontal: 45,
+          paddingVertical: 10,
           borderRadius: 8,
           textAlign: "center",
+        },
+        chevron: {
+          backgroundColor: colors.lightBlack,
+          width: 100,
+        },
+        chevronContainer: {
+          backgroundColor: colors.green,
+          width: 100,
+        },
+        chevronActive: {
+          backgroundColor: colors.green,
+          width: 100,
+        },
+        chevronDown: {
+          backgroundColor: colors.green,
+          width: 100,
+        },
+        chevronUp: {
+          backgroundColor: colors.green,
+          width: 100,
         },
         placeholder: {
           color: colors.lightBlack,

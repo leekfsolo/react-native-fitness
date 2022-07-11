@@ -8,6 +8,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import CButton from "../components/CButton";
 import colors from "../assets/colors";
+import CImageBackground from "../components/CImageBackground";
 
 const SigninSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
@@ -16,17 +17,14 @@ const SigninSchema = Yup.object().shape({
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 const EnterName = ({ navigation }: Props) => {
+  const imgBg = require("../assets/images/4.jpg");
   const validateAccount = (value: { name: string }) => {
     // Validate aacount
     navigation.push("EnterDate");
   };
 
   return (
-    <ImageBackground
-      source={require("../assets/images/4.jpg")}
-      resizeMode="cover"
-      style={styles.bgContainer}
-    >
+    <CImageBackground source={imgBg}>
       <GoBack navigation={navigation} offsetTop={10} />
       <Heading offsetTop={400} style={{ marginBottom: 35 }}>
         It’s great that you’re here! First things first, what should we call
@@ -38,14 +36,7 @@ const EnterName = ({ navigation }: Props) => {
         onSubmit={(value) => validateAccount(value)}
         validationSchema={SigninSchema}
       >
-        {({
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          values,
-          errors,
-          touched,
-        }) => (
+        {({ handleChange, handleBlur, handleSubmit, values }) => (
           <View style={{ width: "100%" }}>
             <TextInput
               onChangeText={handleChange("name")}
@@ -65,18 +56,13 @@ const EnterName = ({ navigation }: Props) => {
           </View>
         )}
       </Formik>
-    </ImageBackground>
+    </CImageBackground>
   );
 };
 
 export default EnterName;
 
 const styles = StyleSheet.create({
-  bgContainer: {
-    flex: 1,
-    alignItems: "center",
-    padding: 40,
-  },
   textInput: {
     height: 40,
     color: colors.textGray,

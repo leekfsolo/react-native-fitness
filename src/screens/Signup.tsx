@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { ImageBackground, StatusBar, StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { RootStackParamList } from "../routes";
 import { Formik } from "formik";
 import CButton from "../components/CButton";
@@ -13,6 +13,7 @@ import * as Yup from "yup";
 import CInput from "../components/CInput";
 import Heading from "../components/Heading";
 import GoBack from "../components/GoBack";
+import CImageBackground from "../components/CImageBackground";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
@@ -29,6 +30,7 @@ const signupElements: Array<SignupValue> = [
 ];
 
 const Signup = ({ navigation }: Props) => {
+  const imgBg = require("../assets/images/2.jpg");
   const [checkboxValue, setCheckboxValue] = useReducer(
     checkboxReducer,
     initCheckbox
@@ -39,11 +41,7 @@ const Signup = ({ navigation }: Props) => {
   };
 
   return (
-    <ImageBackground
-      source={require("../assets/images/2.jpg")}
-      resizeMode="cover"
-      style={styles.bgContainer}
-    >
+    <CImageBackground source={imgBg}>
       <GoBack navigation={navigation} offsetTop={20} />
 
       <Heading style={{ marginBottom: 35 }} offsetTop={240}>
@@ -98,16 +96,8 @@ const Signup = ({ navigation }: Props) => {
           </View>
         )}
       </Formik>
-    </ImageBackground>
+    </CImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  bgContainer: {
-    flex: 1,
-    alignItems: "center",
-    padding: 40,
-  },
-});
 
 export default Signup;

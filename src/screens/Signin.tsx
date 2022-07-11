@@ -1,7 +1,8 @@
+import React from "react";
+
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Formik } from "formik";
-import React from "react";
-import { ImageBackground, StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import colors from "../assets/colors";
 import CButton from "../components/CButton";
 import CInput from "../components/CInput";
@@ -12,6 +13,7 @@ import { RootStackParamList } from "../routes";
 import { ACCOUNT } from "./reducer/enum";
 import { SignupFormControl, SignupValue } from "./reducer/model";
 import * as Yup from "yup";
+import CImageBackground from "../components/CImageBackground";
 
 const accountValue: Array<SignupValue> = [
   { label: ACCOUNT.EMAIL, placeholder: "example@gmail.com" },
@@ -25,6 +27,7 @@ const SigninSchema = Yup.object().shape({
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 const Signin = ({ navigation }: Props) => {
+  const imgBg = require("../assets/images/3.jpg");
   const validateAccount = (value: SignupFormControl) => {
     // Validate aacount
 
@@ -32,11 +35,7 @@ const Signin = ({ navigation }: Props) => {
   };
 
   return (
-    <ImageBackground
-      source={require("../assets/images/3.jpg")}
-      resizeMode="cover"
-      style={styles.bgContainer}
-    >
+    <CImageBackground source={imgBg}>
       <GoBack navigation={navigation} offsetTop={10} />
       <Heading offsetTop={260} style={{ marginBottom: 35 }}>
         Welcome Back!
@@ -86,16 +85,8 @@ const Signin = ({ navigation }: Props) => {
           </View>
         )}
       </Formik>
-    </ImageBackground>
+    </CImageBackground>
   );
 };
 
 export default Signin;
-
-const styles = StyleSheet.create({
-  bgContainer: {
-    flex: 1,
-    alignItems: "center",
-    padding: 40,
-  },
-});
