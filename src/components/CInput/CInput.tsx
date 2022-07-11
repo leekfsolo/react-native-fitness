@@ -1,17 +1,8 @@
 import React, { useState } from "react";
 
-import { FormikContext, FormikErrors, FormikTouched } from "formik";
+import { FormikErrors, FormikTouched } from "formik";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import {
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  TextInput,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import colors from "../../assets/colors";
 import { ACCOUNT } from "../../screens/reducer/enum";
 import { SignupFormControl, SignupValue } from "../../screens/reducer/model";

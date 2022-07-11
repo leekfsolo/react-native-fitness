@@ -1,12 +1,6 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-} from "react-native";
+import { StatusBar, StyleSheet, TouchableHighlight } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import colors from "../../assets/colors";
 import { RootStackParamList } from "../../routes";

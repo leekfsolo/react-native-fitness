@@ -1,8 +1,7 @@
 import Checkbox from "expo-checkbox";
-import React, { Dispatch, useState } from "react";
+import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import colors from "../../assets/colors";
-import { checkboxActionType } from "../../screens/reducer/enum";
 import RobotoText from "../RobotoText/RobotoText";
 
 type Props = {

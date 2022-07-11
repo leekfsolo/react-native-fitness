@@ -1,10 +1,4 @@
-import {
-  ImageBackground,
-  Pressable,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ImageBackground, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../routes";
@@ -35,35 +29,31 @@ const EnterDate = ({ navigation }: Props) => {
 
   return (
     <>
-      <Pressable style={{ flex: 1 }} onPress={() => setShow(false)}>
-        <ImageBackground
-          source={require("../assets/images/5.jpg")}
-          resizeMode="cover"
-          style={styles.bgContainer}
-        >
-          <GoBack navigation={navigation} offsetTop={10} />
-          <Heading offsetTop={400} style={{ marginBottom: 35 }}>
-            When do you want to start?
-          </Heading>
+      <ImageBackground
+        source={require("../assets/images/5.jpg")}
+        resizeMode="cover"
+        style={styles.bgContainer}
+      >
+        <GoBack navigation={navigation} offsetTop={10} />
+        <Heading offsetTop={400} style={{ marginBottom: 35 }}>
+          When do you want to start?
+        </Heading>
 
-          <View>
-            <TouchableOpacity
-              onPress={() => setShow(true)}
-              style={styles.datePicker}
-            >
-              <RobotoText style={{ color: colors.lightBlack, fontSize: 20 }}>
-                {formatDate(date)}
-              </RobotoText>
-            </TouchableOpacity>
-          </View>
-          <CButton
-            fontSize={28}
-            handleNavigate={() => chooseDate(date)}
-            title="Continue"
-            style={{ marginTop: 100, width: "100%" }}
-          />
-        </ImageBackground>
-      </Pressable>
+        <TouchableOpacity
+          onPress={() => setShow(true)}
+          style={styles.datePicker}
+        >
+          <RobotoText style={{ color: colors.lightBlack, fontSize: 20 }}>
+            {formatDate(date)}
+          </RobotoText>
+        </TouchableOpacity>
+        <CButton
+          fontSize={28}
+          handleNavigate={() => chooseDate(date)}
+          title="Continue"
+          style={{ marginTop: 100, width: "100%" }}
+        />
+      </ImageBackground>
       {show && (
         <CDatePicker
           date={date}
