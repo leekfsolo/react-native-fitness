@@ -1,4 +1,4 @@
-import { Text } from "react-native";
+import { StyleProp, Text, ViewStyle } from "react-native";
 import React, { FC } from "react";
 import {
   useFonts,
@@ -18,7 +18,7 @@ import {
 
 type Props = {
   children: string;
-  style?: Object;
+  style?: StyleProp<ViewStyle>;
   fontStyle?: "normal" | "italic";
   fontWeight?: number;
 };

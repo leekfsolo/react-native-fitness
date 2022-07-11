@@ -24,7 +24,10 @@ const Welcome = ({ navigation }: Props) => {
   };
 
   return (
-    <CImageBackground source={imgBg}>
+    <CImageBackground
+      source={imgBg}
+      style={{ justifyContent: "space-between" }}
+    >
       <View style={styles.logoContainer}>
         <Image
           source={require("../assets/images/logo.png")}

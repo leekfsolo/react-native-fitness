@@ -1,13 +1,19 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import { StatusBar, StyleSheet, TouchableHighlight } from "react-native";
+import {
+  StatusBar,
+  StyleProp,
+  StyleSheet,
+  TouchableHighlight,
+  ViewStyle,
+} from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import colors from "../../assets/colors";
 import { RootStackParamList } from "../../routes";
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
-  style?: Object;
+  style?: StyleProp<ViewStyle>;
   offsetTop?: number;
 };
 

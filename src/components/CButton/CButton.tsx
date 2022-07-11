@@ -1,12 +1,18 @@
 import React from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import {
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  Text,
+  ViewStyle,
+} from "react-native";
 import colors from "../../assets/colors";
 
 type Props = {
   handleNavigate: () => void;
   fontSize: number;
   title: string;
-  style?: Object;
+  style?: StyleProp<ViewStyle>;
   disabled?: boolean;
 };
 

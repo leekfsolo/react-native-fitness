@@ -1,18 +1,25 @@
-import { ImageBackground, ImageSourcePropType, StyleSheet } from "react-native";
+import {
+  ImageBackground,
+  ImageSourcePropType,
+  StyleProp,
+  StyleSheet,
+  ViewStyle,
+} from "react-native";
 import React, { ReactNode } from "react";
 
 type Props = {
   children?: ReactNode;
+  style?: StyleProp<ViewStyle>;
   source: ImageSourcePropType;
 };
 
 const CImageBackground = (props: Props) => {
-  const { source, children } = props;
+  const { source, children, style } = props;
   return (
     <ImageBackground
       source={source}
       resizeMode="cover"
-      style={styles.bgContainer}
+      style={[styles.bgContainer, style]}
     >
       {children}
     </ImageBackground>

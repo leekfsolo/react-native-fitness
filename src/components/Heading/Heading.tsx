@@ -1,12 +1,12 @@
 import React from "react";
 
-import { StatusBar, StyleSheet } from "react-native";
+import { StatusBar, StyleProp, StyleSheet, ViewStyle } from "react-native";
 import colors from "../../assets/colors";
 import RobotoText from "../RobotoText/RobotoText";
 
 type Props = {
   children: string;
-  style?: Object;
+  style?: StyleProp<ViewStyle>;
   offsetTop?: number;
 };
 
