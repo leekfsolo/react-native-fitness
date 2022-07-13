@@ -7,6 +7,7 @@ import Heading from "../components/Heading";
 import CButton from "../components/CButton";
 import CSelect from "../components/CSelect";
 import CImageBackground from "../components/CImageBackground";
+import { View } from "react-native";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
@@ -26,10 +27,12 @@ const EnterName = ({ navigation }: Props) => {
         How many times a week do you want to be active?
       </Heading>
 
-      <CSelect
-        selectedTimes={selectedTimes}
-        setSelectedTimes={setSelectedTimes}
-      />
+      <View style={{ width: "50%" }}>
+        <CSelect
+          selectedTimes={selectedTimes}
+          setSelectedTimes={setSelectedTimes}
+        />
+      </View>
 
       <CButton
         fontSize={28}

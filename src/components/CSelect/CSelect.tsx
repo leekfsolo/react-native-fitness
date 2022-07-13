@@ -20,12 +20,13 @@ const CSelect = (props: Props) => {
       placeholder={{ label: "Choose your procedure", color: colors.lightBlack }}
       style={{
         inputIOS: {
+          color: colors.lightBlack,
+          backgroundColor: colors.darkGray,
           fontSize: 16,
           paddingVertical: 12,
           paddingHorizontal: 10,
           borderRadius: 4,
-          color: colors.lightBlack,
-          backgroundColor: colors.darkGray,
+          textAlign: "center",
         },
         inputAndroid: {
           color: colors.lightBlack,
@@ -36,32 +37,12 @@ const CSelect = (props: Props) => {
           borderRadius: 8,
           textAlign: "center",
         },
-        chevron: {
-          backgroundColor: colors.lightBlack,
-          width: 100,
-        },
-        chevronContainer: {
-          backgroundColor: colors.green,
-          width: 100,
-        },
-        chevronActive: {
-          backgroundColor: colors.green,
-          width: 100,
-        },
-        chevronDown: {
-          backgroundColor: colors.green,
-          width: 100,
-        },
-        chevronUp: {
-          backgroundColor: colors.green,
-          width: 100,
-        },
         placeholder: {
           color: colors.lightBlack,
         },
       }}
       items={[
-        { label: "1 times a week", value: "1 times a week" },
+        { label: "1 time a week", value: "1 time a week" },
         { label: "2 times a week", value: "2 times a week" },
         { label: "3 times a week", value: "3 times a week" },
         { label: "4 times a week", value: "4 times a week" },
